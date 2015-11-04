@@ -2,7 +2,7 @@ CROSS_HOST="i686-w64-mingw32"
 inherit cross
 
 NAME="mingw64-i686-libcaca"
-VERSION=0.99.beta18
+VERSION=0.99.beta19
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Color ASCII art library for Win32 toolchain"
@@ -17,8 +17,10 @@ SRC_DIR="libcaca-${VERSION}"
 PATCH_URI="
 	0.99.beta18-dllexport.patch
 	0.99.beta18-opengl-win32.patch
+	0.99.beta19-stdio-mingw64.patch
 "
 
+CPPFLAGS+=" -DMINGW_HAS_SECURE_API"
 # ac_cv_lib_glut_*: freeglut uses stdcall on Win32, incompatible with AC_CHECK_LIB
 CYGCONF_ARGS="
 	--disable-debug
